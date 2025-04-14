@@ -109,11 +109,12 @@ jobs:
 
 ## Step 6: Push and trigger the workflow
 
+```bash
 git add .
 git commit -m "Add basic CI workflow"
 git branch -M main
 git remote add origin https://github.com/your-username/ci-cd-hijack-minimal.git
 git push -u origin main
-
+```
 Then watch the Actions tab in GitHub — and check your Webhook.site to see the stolen secret.
 
