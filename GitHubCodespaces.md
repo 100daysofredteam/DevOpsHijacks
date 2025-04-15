@@ -24,7 +24,7 @@ Go to GitHub and create a new public or private repository named something like 
 
 ## Step 2: Add a .devcontainer Directory
 
-Clone the repository locally:
+Clone the repository locally (replace your-username with your GitHub username):
 
 ```bash
 git clone https://github.com/your-username/codespaces-persistence-demo.git
