@@ -11,6 +11,7 @@ Before you begin, make sure you have the following:
 - **A GitHub account** (with permission to create private repositories).
 - **A browser** to:
   - Access [https://github.com](https://github.com)
+  - Access [Cyber Chef](https://gchq.github.io/CyberChef)
 
 
 ## Step 1: Create a new GitHub repository
